@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>upload</title>
+    <link rel="stylesheet" href="/static/upload.css">
+</head>
+
+<header>
+
+    <div class="navbar" id="navbar">
+        <div id="naam">
+            <a href="{% url 'home' %}"> WराईटHOICE </a>
+        </div>
+
+        <a href="/logout/">Logout</a>
+    </div>
+</header>
+
+
+<body>
+
+    <div class="upload-container">
+        <form enctype="multipart/form-data" method="post" action="/upload/">
+            <!-- <input type="file" name="img"> -->
+            {% csrf_token %}
+            <div id="drop-area">
+            </div>
+            <!-- <input type="file" id="file-input" multiple> -->
+            {{form}}
+            <div id="file-info"> </div>
+            <button type="submit">Analyze</button>
+            <!-- <label for="file-input" id="file-label">Upload</label> -->
+            <p id="errorMessage" style="color: red; display: none;">Please upload an image.</p>
+
+
+
+        </form>
+
+
+    </div>
+
+
+    <script src="/static/upload.js"></script>
+    <script>
+        const uploadInput = document.getElementById('id_image');
+        const imagePreview = document.getElementById('drop-area');
+
+        uploadInput.addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            console.log(file)
+            const imageElement = document.createElement('img');
+            imageElement.src = URL.createObjectURL(file);
+            console.log(imageElement)
+            imageElement.alt = file.name;
+            // imageElement.src = imageDataUrl;
+            imageElement.style.width = '100px'; // Adjust the maximum width as needed
+            imageElement.style.height = '100px'; // Adjust the maximum height as needed
+            imagePreview.appendChild(imageElement);
+        });
+    </script>
+</body>
+
+</html>

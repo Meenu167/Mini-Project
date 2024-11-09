@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>upload</title>
+    <link rel="stylesheet" href="/static/analyse.css">\
+
+</head>
+
+<header>
+
+    <div class="navbar" id="navbar">
+        <div id="naam">
+            <a href="{% url 'home' %}"> WराईटHOICE </a>
+        </div>
+        <a href="/logout/">Logout</a>
+
+
+
+        <!-- 
+    return {
+        'behaviour_type':pred1[0],
+        'perosnality_type':pred2[0],
+        'behaviour_probability':{
+            'outgoing':round(probability1[0][0]*100),
+            'rational':round(probability1[0][1]*100),
+            'shy':round(probability1[0][2]*100),
+        },
+        "personality_probability":{
+            'balanced':round(probability2[0][0]*100),
+            'extroverted':round(probability2[0][1]*100),
+            'introverted':round(probability2[0][2]*100),
+        }
+    } -->
+    </div>
+</header>
+
+
+<body>
+
+    <div class="upload-container">
+        <br>
+        <!-- {{behaviour_probability}} <br> -->
+        <!-- {{personality_probability}} <br> -->
+        <h1>Traits Analyzed</h1>
+        <hr>
+        <div class="container">
+            <div class="p1">
+                <h2>Behaviour :</b> {{behaviour_type}}</h2>
+            </div>
+            <hr style="opacity: 0.4; width: 100%;">
+            <h3 style="margin: 20px 0px;">Behaviour Probabilities</h3>
+            <ol>
+                <li><b>Optimistic, Forward-looking and Future-oriented Mindset :</b> {{behaviour_probability.outgoing}} %</li>
+                <li><b>Attention to Detail :</b> {{behaviour_probability.rational}} %</li>
+                <li><b>More reflective and introspective :</b> {{behaviour_probability.shy}} %</li>
+            </ol>
+            <hr style="opacity: 0.4; width: 100%;">
+            <h3 style="margin: 20px 0px;">Reasoning for {{behaviour_type}} Behaviour</h3>
+            {% if behaviour_type == 'Optimistic, Forward-looking and Future-oriented Mindset' %}
+            <p>It is also evident that you place the dot on the right side of the lower-case "i." This dot placement
+                adds another layer to the analysis of your personality. When the dot is positioned on the right side, it
+                signifies an outgoing personality, a forward-looking and future-oriented mindset. You are likely
+                optimistic and driven towards progress and achievement. This dot placement also suggests that you set
+                high standards for yourself and strive for excellence.
+
+            </p>
+
+            {% elif behaviour_type == 'Attention to detail' %}
+            <p>A balanced dot placement reflects a well-rounded and even-tempered nature. You likely have a stable and
+                composed demeanor, maintaining a sense of balance in your interactions with others. Your ability to
+                approach situations with objectivity and fairness makes you a reliable and trustworthy individual.</p>
+
+            <p>Furthermore, the balanced dot suggests that you possess a practical and pragmatic outlook. You are likely
+                grounded in reality and have a practical approach to problem-solving. Your decision-making process is
+                often guided by a logical and rational mindset.</p>
+
+            {% elif behaviour_type == 'More reflective and introspective' %}
+            <p>It is evident that you place the dot on the left side of the lower-case "i." This dot placement adds
+                another aspect to the analysis of your personality. When the dot is positioned on the left side, it
+                suggests reflective and introspective nature. You are likely inclined to spend time analyzing your own
+                thoughts, emotions, and experiences. Self-reflection and introspection are important to you, as you seek
+                a deeper understanding of yourself and the world around you.
+                Furthermore, the dot on the left side may indicate a preference for privacy and a reserved nature. You
+                may be more cautious in expressing yourself openly and prefer to keep your thoughts and feelings to
+                yourself until you establish trust.
+
+                It is evident that you place the dot on the left side of the lower-case "i." This dot placement adds
+                another aspect to the analysis of your personality. When the dot is positioned on the left side, it
+                suggests a sense of equilibrium and harmony in your personality.
+            </p>
+
+            {% endif %}
+        </div>
+        <hr>
+        <div class="container">
+            <div class="p1">
+                <h2>Personality :</b> {{perosnality_type}}</h2>
+            </div>
+            <hr style="opacity: 0.4; width: 100%;">
+
+            <h3 style="margin: 20px 0px;">Personality Probabilities</h3>
+            
+            <ol>
+                <li><b>Balanced :</b> {{personality_probability.balanced}} %</li>
+                <li><b>Extroverted :</b> {{personality_probability.extroverted}} %</li>
+                <li><b>Introverted :</b> {{personality_probability.introverted}} %</li>
+            </ol>
+            <hr style="opacity: 0.4; width: 100%;">
+            <h3 style="margin: 20px 0px;">Reasoning for {{perosnality_type}} Personality</h3>
+            {% if perosnality_type == 'Balanced' %}
+            <p>Based on your handwriting in the letter, it is evident that you possess a balanced "i." This balanced
+                form
+                suggests several characteristics about your personality. Firstly, it indicates a well-adjusted and
+                harmonious nature. You likely have a realistic view of yourself, neither overestimating nor
+                underestimating
+                your abilities. This balanced approach extends to your interactions with others, as you tend to maintain
+                a
+                sense of equilibrium and fairness in your relationships.
+            </p>
+            <p>The balanced "i" also reflects a level-headed and composed demeanor. You have a good sense of
+                self-control
+                and are capable of managing your emotions and reactions effectively. Your balanced nature allows you to
+                approach situations with objectivity and make well-informed decisions.</p>
+
+            {% elif perosnality_type == 'Extroverted' %}
+            <p>Based on your handwriting in the letter, it is evident that you possess a right-slanted "i." This slant
+                reveals certain characteristics about your personality. Firstly, it suggests an extroverted nature, as
+                individuals with a right slant tend to be outgoing and sociable. You likely enjoy social interactions
+                and
+                feel energized by engaging with others. The right slant also indicates an expressive personality, as you
+                are
+                more inclined to openly express your emotions and thoughts.
+            </p>
+
+            {% elif perosnality_type == 'Introverted' %}
+            <p>Based on your handwriting in the letter, it is evident that you possess a left-slanted "i." This slant
+                suggests several characteristics about your personality. First, it indicates a tendency towards
+                introversion, as individuals with a left slant often prefer solitude and introspection. You may draw
+                energy
+                from your internal world and require time alone to recharge. Additionally, the left slant suggests
+                emotional
+                depth, as you are likely to have a rich inner emotional life and be more attuned to your own feelings.
+                Your
+                introspective nature and a strong desire for self-understanding and personal growth are also indicated.
+                You
+                may approach relationships and experiences from a deeply emotional perspective. Moreover, the left slant
+                suggests a reserved and private nature, as you may be more cautious in expressing yourself openly and
+                prefer
+                to keep your thoughts and feelings to yourself until you establish trust.
+            </p>
+            {% endif %}
+        </div>
+
+
+
+    </div>
+
+
+    <script src="upload.js"></script>
+
+</body>
+
+</html>
